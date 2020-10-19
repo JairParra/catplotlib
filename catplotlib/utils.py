@@ -27,9 +27,17 @@ from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
 class CatImg(Enum): 
     """
-    Contains information on background and symbol paths 
+    Contains information on background and symbol paths 9l.,..,
     """
-    backgrounds = {"nyan0":"../backgrounds/nyan0.jpg"}
+    backgrounds = {"nyan0":"../backgrounds/nyan0.jpg", 
+                   "nyan1":"../backgrounds/nyan1.png", 
+                   # "nyan2":"../backgrounds/nyan1.png", 
+                   # "nyan3":"../backgrounds/nyan1.png", 
+                   # "nyan4":"../backgrounds/nyan1.png", 
+                   # "nyan5":"../backgrounds/nyan1.png", 
+                   # "nyan6":"../backgrounds/nyan1.png", 
+                   # "nyan7":"../backgrounds/nyan1.png", 
+                   }
     icons = {"icon0":"../icons/cat_icon0.png"}
 
 ##################################################################################

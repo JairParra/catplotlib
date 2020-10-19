@@ -18,7 +18,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="catplotlib-jairparra", # Replace with your own username
     version="0.0.1",
-    author="Hair Parra",
+    author="Hair Parra & Nina Kumagai",
     author_email="jair.parra@outlook.com",
     description="Matplotlib. But with cats. ฅ(＾・ω・＾ฅ)",
     long_description=long_description,

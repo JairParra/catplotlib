@@ -57,28 +57,41 @@ class CatterPlot():
             - X: list or array of numeric data. 
             - y: list or array of numeric data. 
         """ 
-        self.extent = [min(X), max(X), min(y), max(y)] 
+        return [min(X), max(X), min(y), max(y)] 
     
-        
         
     def load_meaowground(self, background=None): 
         """
-        Loads and returns chosen 
+        Loads and returns chosen background. 
+        @args: 
+            - background: Integer representing background to choose. 
         """
         
         try: 
             if not background: 
-                img_rgb = Image.open(CatImg.backgrounds.value[self.background])
+                meaowground = Image.open(CatImg.backgrounds.value[self.background])
             else: 
-                img_rgb = Image.open(CatImg.backgrounds[background]) 
+                meaowground = Image.open(CatImg.backgrounds.value[background])
         except Exception as e: 
             print("--WARNING--: Invalid background specified. Default background will be used.") 
             print("\tCurrently supported abckgrounds are: ") 
-            pp.pprint(CatImg.backgrounds.keys())
-            img_rgb = Image.open(CatImg.backgrounds.value[self.background])
+            pp.pprint(CatImg.backgrounds.value.keys())
+            meaowground = Image.open(CatImg.backgrounds.value[self.background])
             
-        return img_rgb
+        return meaowground
+    
+    
+    def load_meawcon(self, icon=None): 
+        """
+        Loads icon that will be used instead of dots. 
+        """ 
+        if isinstance(icon, int) and icon >= 0: 
+            pawth = CatImg.icons.value["icon{}".format(icon)]
+        else: 
+            pawth = CatImg.icons.value["icon0"]
             
+        return pawth 
+        
         
     def nyancatter(self, X, y, image, ax=None, zoom=1):
         """
@@ -103,16 +116,41 @@ class CatterPlot():
         return artists
         
         
-    def catterplot(self,X,y, cat=0, ): 
+    def catterplot(self,X,y,p='-o',cat=None, icon=None, figsize=(10,10), zoom=0.3): 
         """
         Plots a sCATter plot 
+        @args: 
+            - p: kind of lines to plot 
+            - cat: int --> loads catground image. None by default will use default. 
+            - icon: int representing points to use. 
         """
         if len(X) != len(y): 
             raise ValueError("X and y must be one-dimensional arrays with the same lenght.") 
         
-        # TODO: Complete this functino 
+        # TODO: Complete this function 
+        meaowground = self.load_meaowground(background="nyan" + str(cat)) 
+        meaowground.putalpha(150) # transparency  
         
+        # Load icon path 
+        icon_pawth = self.load_meawcon(icon)
         
+        # Obtain image extent
+        extent = self.get_extent(X,y) 
+
+        # initialize plot 
+        fig, ax = plt.subplots(figsize=figsize) 
+
+        # Plot background  
+        ax.imshow(meaowground, extent=extent)
+
+        # Plot actual
+        if p == "-o": 
+            self.nyancatter(X,y, icon_pawth, ax=ax, zoom=zoom)
         
+        # display plot 
+        plt.plot(X,y, p, color="white") 
+        
+        # Render
+        plt.show() 
         
         

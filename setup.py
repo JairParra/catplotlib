@@ -13,12 +13,12 @@ import setuptools
 ### 2. Setting up ### 
 
 with open("README.md", "r") as fh:
-    long_description = fh.read()
+    long_description = None
 
 setuptools.setup(
-    name="catplotlib-jairparra", # Replace with your own username
-    version="0.0.1",
-    author="Hair Parra & Nina Kumagai",
+    name="catplotlib", # Replace with your own username
+    version="1.0.0", 
+    author="Hair Parra",
     author_email="jair.parra@outlook.com",
     description="Matplotlib. But with cats. ฅ(＾・ω・＾ฅ)",
     long_description=long_description,
@@ -31,4 +31,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
+    install_requires=[]
 )

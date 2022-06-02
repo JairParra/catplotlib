@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 *__pycache__/
+__pycache/ 
 
 # C extensions
 *.so
@@ -28,6 +29,7 @@ share/python-wheels/
 *.egg
 MANIFEST
 *.pyc
+.pyc 
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

@@ -25,7 +25,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from PIL import Image
-from typing import Union
+from typing import Union 
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
 # catplotliub 
@@ -50,19 +50,15 @@ class CatterPlot():
         specifies object instance background 
     figsize: tuple
         2-integer tuple specifying figsize argument used in matplolib
-    
     transparency: int 
         Determines the dregee of transparency of the background image
         
 
     Methods
     -------
-    says(sound=None)
-        Prints the animals name and what sound it makes
     """
     def __init__(self, 
                  background="nyan0", 
-                 figsize=(10,10),  
                  extent:str="auto", 
                  transparency=150, 
                  ): 
@@ -71,13 +67,11 @@ class CatterPlot():
             - background: Image background to use. 
                 * "nyan0": Classic nyan cat
                 * "nyan1": Nyan anime girl
-            - figsize: adjust matplotlib figure size whenever proper 
             - extent: adjust x and y limits for actual figure 
                 * 'auto': Obtains minimum and maximum of the data and 
                           graphs based on coordinates.  (DEPRECATE?)
         """
         self.background = background 
-        self.figsize = figsize  
         self.extent = extent  # not used
         self.transparency = transparency 
         
@@ -247,7 +241,7 @@ class CatterPlot():
         
         # else if extent is a list of size 4 
         elif isinstance(extent, list) and len(extent) == 4: 
-            # check that all elements are ints
+            # check that all elements are ints 
             if not all(list(map(lambda e: isinstance(e, int), extent))):
                 raise ValueError("argument 'extent' must be 'auto' or a size 4 list [min_x, max_x, min_y, max_y]")
 
@@ -274,6 +268,4 @@ class CatterPlot():
         """
         s = f"CatterPlot(background={self.background})"
         return s
-        
-        
         

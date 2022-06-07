@@ -169,8 +169,8 @@ class CatterPlot():
             ax = plt.gca()
             
         # control level of zoom 
-        if zoom <= 0.0 or zoom > 1.0: 
-            raise ValueError("Invalid zoom range. 'zoom' should have a value between 0.0 and 1.0")
+        if zoom <= 0.0 or zoom > 3.0: 
+            raise ValueError("Invalid zoom range. 'zoom' should have a value between 0.0 and 3.0")
             
         try:
             # use provided path to read an image
@@ -211,8 +211,10 @@ class CatterPlot():
             - p (str): kind of lines and points to plot. Patterns can be ['o', '-o', '--', ...] etc. 
             - cat (int): loads catground image. None by default will use default. 
             - icon (int): representing points to use. 
+            - extent (str or list of 4): 
             - figsize (tuple of ints): figsize used in Matplotlib. 
             - transparency (int): The higher the value, the more transparency. Default is 200.
+            - icon_zoom (float): 
             
         """
         # checks 
@@ -224,6 +226,8 @@ class CatterPlot():
             raise ValueError("'transparency' should be in the range (0, 300]")
         if len(x) != len(y): 
             raise ValueError("X and y must be one-dimensional arrays with the same lenght.") 
+        if icon_zoom <= 0.0: 
+            raise ValueError("icon_zoom must be positive")
         
         # obtain background to use
         meaowground = self._load_meaowground(background="nyan" + str(cat)) 

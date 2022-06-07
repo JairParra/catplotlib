@@ -10,9 +10,10 @@ Created on Sat Oct  3 13:04:52 2020
 """
 
 ##################################################################################
-    
 ### 1. Imports ### 
+##################################################################################
 
+import os 
 import numpy as np
 import matplotlib.pyplot as plt
 from enum import Enum  # class to create enumeratiosn 
@@ -20,11 +21,11 @@ from PIL import Image, ImageDraw, ImageFilter
 from matplotlib.cbook import get_sample_data
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
-################################################################################## 
-
-### 2. Enums ### 
-import os 
 os.path.realpath("__file__")
+
+################################################################################## 
+### 2. Enums ### 
+##################################################################################
 
 class CatImg(Enum): 
     """
@@ -48,9 +49,3 @@ class CatImg(Enum):
              "icon12":"icons\\cat_icon12.png", 
              "icon13":"icons\\cat_icon13.png",
              }
-
-##################################################################################
-
-### 2. Functions ### 
-
- 
